@@ -1,5 +1,7 @@
 package org.cuatrovientos.larris.PSPActividad4Semaforos;
 
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.SynchronousQueue;
 
 /**
@@ -10,12 +12,10 @@ public class App
 {
     public static void main( String[] args )
     {
-    	SynchronousQueue<Integer> queue = new SynchronousQueue<Integer>();
-        RetirarDinero ret = new RetirarDinero(queue);
-        DepositarDinero dep = new DepositarDinero(queue);
+    	BlockingQueue<Integer> queue = new LinkedBlockingQueue<Integer>();
+        Client cli = new Client(queue);
 
-        ret.start();
-        dep.start();
+        cli.start();
         
         
     }
